@@ -1,7 +1,9 @@
 const express = require('express')
 const path = require('path')
+const data = require('./data/item.json')
 const app = express()
 const port = 3000
+console.log(data)
 
 //middleware sama seperti fungsi, urutan berlaku
 const middlewareSatu = (req, res, next) => {
@@ -15,6 +17,7 @@ const middlewareDua = (req, res, next) => {
 
 app.use(middlewareSatu)
 app.use(middlewareDua)
+app.use(express.static('public'))
 
 app.get('/', (req, res) =>{
 	res.render('index', {
